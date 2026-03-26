@@ -1,9 +1,8 @@
 package com.rgoswami3414.mydepartment.Dtos;
 
 import com.rgoswami3414.mydepartment.Model.Employee;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import com.rgoswami3414.mydepartment.Utils.PhoneNoValidator;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -21,9 +20,15 @@ public class Dtos {
         private String lastName;
         @Email
         private String email;
-
+        @PhoneNoValidator
         private String phoneNo;
+        @Max(80)
+        @Min(0)
+        @NotBlank
+        @NotNull
         private int experience;
+        @Max(100)
+        @Min(18)
         private int age;
         private long manager_id;
         private int department_id;
@@ -32,7 +37,12 @@ public class Dtos {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class RequestDepartment{
+        @NotBlank
+        @NotNull
+        @Size(min = 3 , max = 50)
         private String departmentName;
+        @NotNull
+        @NotBlank
         private String location;
         private String specification;
     }
@@ -40,7 +50,9 @@ public class Dtos {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class RequestSalary{
-        private long employee_id;
+        @NotBlank
+        @NotBlank
+        private Long employee_id;
         private double amount;
         private LocalDateTime effective_date;
     }
