@@ -20,7 +20,7 @@ public class Department {
     @Column(name = "department_name",unique = true)
     private String departmentName;
     private String location;
-    private String Specification;
+    private String specification;
     private boolean isActive;
     @OneToMany(mappedBy = "department",fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Employee> employees;
