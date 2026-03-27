@@ -56,7 +56,20 @@ public class Dtos {
 
         private String specification;
     }
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class UpdateDepartment{
+        int id;
+        @NotBlank(message = "Department name is required")
+        @Size(min = 3, max = 50, message = "Department name must be between 3 and 50 characters")
+        private String departmentName;
 
+        @NotBlank(message = "Location is required")
+        private String location;
+
+        private String specification;
+                }
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
